@@ -1,0 +1,27 @@
+// Fonts
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Core
+@import "core/general";
+@import "core/mixins";
+
+// Components
+@import "components/button";
+@import "components/sidebar";
+@import "components/header";
+@import "components/card";
+@import "components/text";
+@import "components/forms";
+@import "components/background";
+@import "components/intltel";
+@import "components/table";
+
+// Pages
+@import "pages/index";
+@import "pages/faq";
+@import "pages/customer-dashboard";

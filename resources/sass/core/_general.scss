@@ -1,0 +1,84 @@
+body {
+    font-size: $font-size-base;
+    background-color: #f8f8f8;
+    font-family: $font-family-sans-serif $im;
+}
+
+a {
+    color: $brand-color--default;
+    &:hover {
+        text-decoration: none;
+        color: $black;
+    }
+}
+
+ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: unset;
+}
+
+.ptb-260 {
+    padding: 170px 0;
+    @include media-breakpoint-up(md) {
+        padding: 260px 0;
+    }
+}
+
+.fs {
+    &-26px {
+        font-size: 26px;
+    }
+    &-48 {
+        @include media-breakpoint-up(xl) {
+            font-size: 48px;
+        }
+        font-size: 30px;
+    }
+    &-38 {
+        font-size: 38px;
+        @include media-breakpoint-down(sm) {
+            font-size: 30px;
+        }
+    }
+    &-20 {
+        font-size: 20px;
+    }
+    &-14 {
+        font-size: 14px;
+    }
+}
+
+.lh {
+    &-108 {
+        line-height: 108px;
+    }
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.vht-100 {
+    height: 100vh;
+}
+
+.error {
+    color: $red $im;
+    font-size: 13px;
+}
+
+.bd-0 {
+    border-radius: 0;
+}
+
+p {
+    font-family: $font-family-sans-serif;
+}
+
+.img-height {
+    height: 64px;
+}

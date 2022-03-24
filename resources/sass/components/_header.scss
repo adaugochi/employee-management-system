@@ -1,0 +1,27 @@
+.header {
+    &-area {
+        .logo {
+            line-height: 101px;
+        }
+    }
+    &-text {
+        color: $black;
+        font-weight: bold;
+        letter-spacing: 2.5px;
+        margin: 6px 0 19px;
+    }
+    &__user-toggle {
+        display: flex;
+        align-items: center;
+    }
+
+    &__user-avatar {
+        @include avatarCircle(40px, 20px, $white, $black)
+    }
+
+    &__cart {
+        margin-left: -14px;
+        position: absolute;
+        margin-top: 29px;
+    }
+}

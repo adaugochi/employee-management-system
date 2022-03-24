@@ -1,0 +1,126 @@
+.btn {
+    font-size: $font-sm;
+    border-radius: 5px;
+    border: none;
+    padding: 7px 25px 8px !important;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    transform: translateY(0px);
+    font-weight: bold;
+    height: 45px;
+    display: table-cell;
+
+    &:hover, &:active, &:focus{
+        color: $white;
+        transform: translateY(-3px);
+        outline: unset;
+        box-shadow: unset;
+    }
+
+    &:disabled {
+        background: $brand-color--gary;
+        cursor: not-allowed;
+        //&:hover {
+        //    background: $brand-color--gary;
+        //    cursor: not-allowed;
+        //}
+    }
+
+    &--primary {
+        color: $white;
+        background: $brand-color--default;
+        &:hover {
+            background: $brand-color--two;
+        }
+    }
+
+    &--lg {
+        height: 56px;
+    }
+
+    &--sm {
+        padding: 5px 20px 6px !important;
+    }
+
+    &--secondary {
+        border: 2px solid $brand-color--two;
+        background-image: none;
+        color: $white;
+        background-color: $brand-color--two;
+        &:hover {
+            background-image: none;
+            background: $brand-color--two;
+        }
+        &-outline {
+            color: $brand-color--two;
+            background: transparent;
+            border: 2px solid $brand-color--two;
+            &:hover {
+                background: $brand-color--two;
+                color: white;
+            }
+        }
+    }
+    &--black{
+        color: $white;
+        background-image: none;
+        background-color: $black;
+        &:hover{
+            background-image: none;
+            background: $black;
+        }
+    }
+    &--white{
+        background-image: none;
+        background-color: $white;
+        color: $black;
+        box-shadow: 0 0 30px 5px rgba(0,0,0,0.07);
+        &:hover, &:focus {
+            background-image: none;
+            background: $white;
+            color: $black;
+        }
+    }
+    &--gradient{
+        background: linear-gradient(-48deg, $brand-color--green  -30%, $brand-color--default 60%);
+        color: $white;
+        //background: linear-gradient(150deg, $brand-color--default 0, $brand-color--green 100%) !important;
+        &:hover {
+            background: linear-gradient(-48deg, $brand-color--default -30%, $brand-color--green 60%);
+        }
+    }
+
+    &--link{
+        color: $brand-color--default;
+        &:hover{
+            transform: translateY(-5px);
+        }
+    }
+    &-bottom-line {
+        border: unset $im;
+        border-bottom: 2px solid $brand-color--gary $im;
+        border-radius: 0 $im;
+        color: $brand-color--gary $im;
+        padding: 27px 14px $im;
+        &.active {
+            color: $brand-color--two $im;
+            border-bottom-color: $brand-color--two $im;
+        }
+        &:hover {
+            color: $white $im;
+            background-color: $brand-color--two $im;
+            border-bottom-color: $brand-color--two $im;
+        }
+    }
+    &-text {
+        color: $brand-color--default;
+        font-size: $body-font;
+        font-weight: bold;
+    }
+    &-icon {
+        padding: 5px !important;
+        font-size: 18px;
+    }
+}
