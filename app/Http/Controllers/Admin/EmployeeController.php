@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exceptions\ModelNotCreatedException;
 use App\Helpers\Messages;
+use App\Helpers\Utils;
 use App\Http\Repositories\UserRepository;
 use App\Http\Requests\UserRequest;
 use App\Http\Services\UserService;
+use App\Mail\SetPasswordMail;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class EmployeeController extends BaseAdminController
 {
@@ -41,8 +44,14 @@ class EmployeeController extends BaseAdminController
     {
         DB::beginTransaction();
         try {
+            $email = $request->get('email');
+            $token = Utils::generateToken();
+            $actionURL = config('app.url') . "employee/invite?token=" . $token;
             $userId = $this->userService->saveUser($request->all());
             $this->userService->saveEmployee($request->all(), $userId);
+
+            $this->userService->sendInviteToken($email, $token);
+            Mail::to($email)->send(new SetPasswordMail($request->get('first_name'), $actionURL));
 
             DB::commit();
             return redirect(route(self::EMP_REDIRECT_URI))->with([

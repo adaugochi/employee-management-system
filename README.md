@@ -21,41 +21,128 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+# Employee Management System (EMS)
+EMS is a web-based solution that help organizations manage their employees. This application allows employees and an
+admin to use the system. The administrator create user accounts and the application helps in salary payments.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## User Types
+- Admin
+- Employee
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Requirements
+- PHP - ^7.2
+- [node](https://nodejs.org/)
+- npm
+- composer
 
-## Laravel Sponsors
+## Clone
+You have to clone this repo using either `HTTPS` or `SSH`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- HTTPS
+```bash
+git clone https://github.com/adaugochi/employee-management-system.git
+```
 
-### Premium Partners
+- SSH
+```bash
+git clone git@github.com:adaugochi/employee-management-system.git
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+## Install Dependencies
+#### Composer Dependencies
+```bash
+composer install
+```
 
-## Contributing
+#### Node.js Dependencies
+```bash
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Virtual Host Setup (optional)
+
+*Windows*
+[Link 1](http://foundationphp.com/tutorials/apache_vhosts.php)
+[Link 2](https://www.kristengrote.com/blog/articles/how-to-set-up-virtual-hosts-using-wamp)
+
+*Mac*
+[Link 1](http://coolestguidesontheplanet.com/set-virtual-hosts-apache-mac-osx-10-9-mavericks-osx-10-8-mountain-lion/)
+[Link 2](http://coolestguidesontheplanet.com/set-virtual-hosts-apache-mac-osx-10-10-yosemite/)
+
+*Debian Linux*
+[Link 1](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts)
+[Link 2](http://www.unixmen.com/setup-apache-virtual-hosts-on-ubuntu-15-04/)
+
+Sample Virtual Host Config for Apache
+```apache
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    DocumentRoot "<WebServer Root Dir>/employee-management-system/public"
+    ServerName local.manup.com
+    <Directory <WebServer Root Dir>/employee-management-system/public>
+       AllowOverride all
+       Options -MultiViews
+      Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+## Environment Variables
+Make a copy of `.env.example` to `.env` in the env directory.
+
+## Setup Database
+
+#### Create Database
+```sql
+CREATE DATABASE ems CHARACTER SET utf8 DEFAULT COLLATE utf8_unicode_ci;
+```
+
+### Migration
+```bash
+// run migration
+php artisan migrate
+
+// rollback migration
+php artisan migrate:rollback
+
+// refresh migration
+php artisan migrate:refresh
+```
+
+### Specify Path to Migration File
+```bash
+// run migration
+php artisan migrate --path=database/migrations/filename.php
+
+// rollback migration
+php artisan migrate:rollback --path=database/migrations/filename.php
+
+// refresh migration
+php artisan migrate:refresh --path=database/migrations/filename.php
+```
+
+## Seeding
+```bash
+php artisan db:seed --class=UserSeeder
+```
+
+## Compile SCSS to CSS
+You can compile your scss file to css using:
+
+```bash
+npm run watch
+```
+
+## Starting the Application
+You can run the application in development mode by running this command from the project directory:
+
+```bash
+php artisan serve
+```
+
+## Author of README.md
+- Adaa Mgbede <adaamgbede@gmail.com>
 
 ## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+In order to ensure that the Laravel community is welcoming to all, please review and
+abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).

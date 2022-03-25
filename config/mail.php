@@ -88,6 +88,8 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'expiry_time' => env('EXPIRY_TIME', 15),
+
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings

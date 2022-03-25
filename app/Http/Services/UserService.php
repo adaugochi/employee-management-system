@@ -4,8 +4,12 @@ namespace App\Http\Services;
 
 use App\Exceptions\ModelNotCreatedException;
 use App\Helpers\Messages;
+use App\Helpers\MigrationConstants;
+use App\Helpers\Utils;
 use App\Http\Repositories\EmployeeRepository;
 use App\Http\Repositories\UserRepository;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class UserService extends BaseService
 {
@@ -43,5 +47,15 @@ class UserService extends BaseService
         }
 
         return true;
+    }
+
+    public function sendInviteToken($email, $token): bool
+    {
+        return DB::table(MigrationConstants::TABLE_PASSWORD_RESET)->insert([
+            'email' => $email,
+            'token' => $token,
+            'expires_at' => Carbon::now()->addMinutes(config('mail.expiry_time')),
+            'created_at' => Utils::getCurrentDatetime()
+        ]);
     }
 }
