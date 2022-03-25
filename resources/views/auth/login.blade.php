@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 @section('route', route('login'))
-@section('header', 'Welcome back')
+@section('header', 'Login')
 @section('content')
     <div class="row">
         <x-input name="email" placeholder="Your Email *"></x-input>

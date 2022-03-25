@@ -30,25 +30,13 @@
     border: 1px solid transparent;
     border-radius: 30px;
     font-size: 10px;
-    &-un-paid, &-unverified, &-inactive {
+    &-inactive {
         color: darken($danger, 30%);
         background-color: lighten($danger, 20%);
     }
-    &-delivered, &-verified, &-active {
+    &-active {
         color: darken($success, 30%);
         background-color: lighten($success, 30%);
-    }
-    &-draft, &-awaiting-shipment {
-        color: darken($brand-color--gary, 20%);
-        background-color: lighten($brand-color--gary, 30%);
-    }
-    &-confirm, &-shipped {
-        color: darken($brand-color-sub--heading, 20%);
-        background-color: lighten($brand-color-sub--heading, 30%);
-    }
-    &-pending {
-        color: darken($orange, 20%);
-        background-color: lighten($orange, 30%);
     }
 }
 
@@ -115,14 +103,6 @@
         &.icon-grey {
             color: #999;
             border: 2px solid #ccc;
-        }
-        &.icon-success {
-            color: $success;
-            border: 2px solid $success;
-        }
-        &.icon-danger {
-            color: $red;
-            border: 2px solid $red
         }
     }
 

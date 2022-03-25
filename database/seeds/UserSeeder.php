@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
     {
         DB::table(MigrationConstants::TABLE_USERS)->insert([
             [
+                'title' => 'Miss',
                 'first_name' => 'Admin',
                 'last_name' => 'EMS',
                 'name' => 'Admin EMS',

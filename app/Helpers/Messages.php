@@ -29,13 +29,4 @@ class Messages
     {
         return sprintf('%s was %s successfully', $entity, $task);
     }
-
-    public static function getResetPasswordMessage($url): string
-    {
-        return sprintf (
-            "You are receiving this SMS because we received a password reset request for your account.
-             Kindly visit the link below to reset your password. %s This password reset link will expire in 15 minutes.
-             If you did not request a password reset, no further action is required", $url
-        );
-    }
 }

@@ -17,20 +17,20 @@
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                     <li class="nk-menu-item">
-                        <a href="#" class="nk-menu-link">
+                        <a href="{{ route('admin.home') }}" class="nk-menu-link">
                             <span class="nk-menu-icon">
-                                <i class="icon bi bi-house-door"></i>
+                                <x-bootstrap-icon name="house-door" class="icon"/>
                             </span>
                             <span class="nk-menu-text">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nk-menu-item">
-                        <a href="#" class="nk-menu-link">
+                        <a href="{{ route('admin.employees') }}" class="nk-menu-link">
                             <span class="nk-menu-icon">
-                                <i class="icon bi bi-view-list"></i>
+                                <x-bootstrap-icon name="person" class="icon"/>
                             </span>
-                            <span class="nk-menu-text">Employee</span>
+                            <span class="nk-menu-text">Employees</span>
                         </a>
                     </li>
                 </ul><!-- .nk-menu -->

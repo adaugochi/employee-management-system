@@ -70,35 +70,14 @@
   font-size: 10px;
 }
 
-.status-un-paid,
-.status-unverified,
 .status-inactive {
   color: #7e0a0a;
   background-color: #f69191;
 }
 
-.status-delivered,
-.status-verified,
 .status-active {
   color: #164a2c;
   background-color: #abe7c4;
-}
-
-.status-draft,
-.status-awaiting-shipment {
-  color: #2a2a2a;
-  background-color: #aaaaaa;
-}
-
-.status-confirm,
-.status-shipped {
-  color: #42446b;
-  background-color: #cccde0;
-}
-
-.status-pending {
-  color: #c66609;
-  background-color: #fde7d1;
 }
 
 .pagination {
@@ -169,16 +148,6 @@
   border: 2px solid #ccc;
 }
 
-.empty-state__icon.icon-success {
-  color: #38c172;
-  border: 2px solid #38c172;
-}
-
-.empty-state__icon.icon-danger {
-  color: #ee3333;
-  border: 2px solid #ee3333;
-}
-
 .empty-state__description {
   font-size: 18px;
   line-height: 1.3333333;
@@ -227,58 +196,6 @@
   height: 56px;
 }
 
-.btn--sm {
-  padding: 5px 20px 6px !important;
-}
-
-.btn--secondary {
-  border: 2px solid #d2a98e;
-  background-image: none;
-  color: #fff;
-  background-color: #d2a98e;
-}
-
-.btn--secondary:hover {
-  background-image: none;
-  background: #d2a98e;
-}
-
-.btn--secondary-outline {
-  color: #d2a98e;
-  background: transparent;
-  border: 2px solid #d2a98e;
-}
-
-.btn--secondary-outline:hover {
-  background: #d2a98e;
-  color: white;
-}
-
-.btn--black {
-  color: #fff;
-  background-image: none;
-  background-color: #000;
-}
-
-.btn--black:hover {
-  background-image: none;
-  background: #000;
-}
-
-.btn--white {
-  background-image: none;
-  background-color: #fff;
-  color: #000;
-  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.07);
-}
-
-.btn--white:hover,
-.btn--white:focus {
-  background-image: none;
-  background: #fff;
-  color: #000;
-}
-
 .btn--gradient {
   background: linear-gradient(-48deg, #38cb89 -30%, #086AD8 60%);
   color: #fff;
@@ -288,41 +205,8 @@
   background: linear-gradient(-48deg, #086AD8 -30%, #38cb89 60%);
 }
 
-.btn--link {
-  color: #086AD8;
-}
-
-.btn--link:hover {
-  transform: translateY(-5px);
-}
-
-.btn-bottom-line {
-  border: unset !important;
-  border-bottom: 2px solid #5d5d5d !important;
-  border-radius: 0 !important;
-  color: #5d5d5d !important;
-  padding: 27px 14px !important;
-}
-
-.btn-bottom-line.active {
-  color: #d2a98e !important;
-  border-bottom-color: #d2a98e !important;
-}
-
-.btn-bottom-line:hover {
-  color: #fff !important;
-  background-color: #d2a98e !important;
-  border-bottom-color: #d2a98e !important;
-}
-
-.btn-text {
-  color: #086AD8;
-  font-size: 14px;
-  font-weight: bold;
-}
-
 .btn-icon {
-  padding: 5px !important;
+  padding: 14px !important;
   font-size: 18px;
 }
 
@@ -416,6 +300,19 @@
 
 .form-input select {
   color: #777;
+}
+
+.iti {
+  display: block !important;
+}
+
+.iti input {
+  padding-left: 104px !important;
+}
+
+.iti__selected-flag {
+  border-radius: 5px 0 0 5px;
+  height: 56px !important;
 }
 
 body {

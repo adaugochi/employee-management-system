@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/dashboard/css/styles.css">
     <link rel="stylesheet" href="/css/portal.css">
     <link rel="stylesheet" href="/css/toastr.css">
-
+    @yield('link')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,8 +32,8 @@
         <!-- main @s -->
         <div class="nk-main ">
             <!-- sidebar @s -->
-        @include('elements.admin.sidebar')
-        <!-- wrap @s -->
+            @include('elements.admin.sidebar')
+            <!-- wrap @s -->
             <div class="nk-wrap ">
                 <!-- main header @s -->
             @include('elements.admin.header')

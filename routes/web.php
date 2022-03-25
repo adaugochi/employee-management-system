@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
@@ -38,5 +39,10 @@ Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'employee']], fun
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.home');
+
+    // Employee
+    Route::get('/employees', [EmployeeController::class, 'index'])->name('admin.employees');
+    Route::get('/employees/user/{id?}', [EmployeeController::class, 'addEmployee'])->name('admin.employee');
+    Route::post('/employee', [EmployeeController::class, 'saveEmployee'])->name('admin.employee.save');
 });
 

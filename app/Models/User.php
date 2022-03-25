@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Helpers\Utils;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @property string $email
@@ -31,6 +31,7 @@ class User extends Authenticatable
 
         static::saving(function (User $user) {
             $user->name = $user->getFullName();
+            self::clearCache();
         });
     }
 
@@ -40,8 +41,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'title',
         'first_name',
         'last_name',
+        'middle_name',
         'name',
         'user_type',
         'phone_number',
@@ -81,5 +84,10 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->user_type === User::ADMIN;
+    }
+
+    protected static function clearCache(): bool
+    {
+        return Cache::forget('users');
     }
 }
