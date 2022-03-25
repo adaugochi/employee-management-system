@@ -9,7 +9,7 @@ class Utils
 {
     public static function generateToken(): string
     {
-        return Str::random(60); //md5(rand(1, 10) . microtime()); //OR str_random(32);
+        return Str::random(100); //md5(rand(1, 10) . microtime()); //OR str_random(32);
     }
 
     public static function formatDate($timestamp)
@@ -20,14 +20,6 @@ class Utils
     public static function formatTime($timestamp)
     {
         return date("h:iA", strtotime($timestamp));
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public static function generateConfirmationCode(): int
-    {
-        return random_int(1000000, 9999999);
     }
 
     public static function getCurrentDatetime(): string

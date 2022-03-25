@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Manup</title>
+    <title>{{ config('app.name') }}</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap" rel="stylesheet">
     <style>
@@ -83,8 +83,8 @@
                     <tbody>
                     <tr>
                         <td style="text-align: center; padding-bottom:25px">
-                            <a href="/">
-                                <img style="height: 40px" src="{{ asset('images/logo.png')}}" alt="logo" style="width:320px">
+                            <a href="{{ route('index') }}">
+                                <h2>{{ config('app.name') }}</h2>
                             </a>
                         </td>
                     </tr>
@@ -97,11 +97,11 @@
                     <tbody>
                         <tr>
                             <td style="text-align: center; padding:25px 20px 0;">
-                                <p style="font-size: 13px;">Copyright © {{ date('Y') }} Manup. All rights reserved. .</p>
+                                <p style="font-size: 13px;">Copyright © {{ date('Y') }} {{ config('app.name') }}. All rights reserved. .</p>
                                 <p style="font-size: 12px;">
                                     This email was sent to you as a registered user of
                                     <a style="color: #000000; text-decoration:none;" href="{{ route('index') }}">
-                                        {{ env('APP_URL') }}
+                                        {{ config('app.url') }}
                                     </a>
                                 </p>
                             </td>
@@ -113,7 +113,6 @@
     </table>
 </center>
 
-<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>
 

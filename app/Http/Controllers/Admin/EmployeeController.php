@@ -46,11 +46,11 @@ class EmployeeController extends BaseAdminController
         try {
             $email = $request->get('email');
             $token = Utils::generateToken();
-            $actionURL = config('app.url') . "employee/invite?token=" . $token;
+            $actionURL = config('app.url') . "set-password/" . $token;
             $userId = $this->userService->saveUser($request->all());
             $this->userService->saveEmployee($request->all(), $userId);
 
-            $this->userService->sendInviteToken($email, $token);
+            $this->userService->sendPasswordToken($email, $token);
             Mail::to($email)->send(new SetPasswordMail($request->get('first_name'), $actionURL));
 
             DB::commit();

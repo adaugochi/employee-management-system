@@ -8,19 +8,14 @@ class Messages
     const USER_NOT_FOUND = "Could not find this user";
     const ACCT_NOT_EXIST = 'This account does not exist';
     const INCORRECT_CREDENTIALS = 'Incorrect login credentials';
-    const TOKEN_EXPIRED = "Your password reset token has expired. kindly request for a new token";
-    const INVALID_TOKEN = "Invalid password reset token";
+    const TOKEN_EXPIRED = "Your token has expired. kindly request for a new token";
+    const INVALID_TOKEN = "Invalid token";
     const PWD_RESET_MSG = 'Your password reset was successful';
+    const PWD_SET_MSG = 'Your password set was successful';
     const ACCT_DEACTIVATE = 'This account has been deactivated. You can no longer sign in';
     const ACCT_EXIST = 'This account is registered already, you can login';
     const INVALID_SIGNUP_TOKEN = "Invalid sign up token";
     const INVALID_VERIFICATION_CODE = "You entered an invalid verification code";
-    const VERIFICATION_CODE_SENT = "A new verification has been sent to you";
-    const ACCOUNT_NOT_VERIFIED = 'This account has not been verified. Kindly enter the verification code
-    sent to the phone number provider during sign up';
-    const CODE_EXPIRED = "Your verification code has expired. Please resend another verification code";
-    const REGISTRATION_INCOMPLETE = "Successful. In order to complete your registration, Kindly enter the verification code
-    sent to the phone number provider during sign up";
     const NOT_UPDATED = 'Entity failed to update';
     const NOT_CREATED = 'Entity not saved';
 

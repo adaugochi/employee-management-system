@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\SetPasswordController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,9 +32,18 @@ Route::group(['prefix' => 'password', 'middleware' => []], function () {
     Route::get('reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 });
 
+// Set Password
+Route::post('set-password', [SetPasswordController::class, 'setPassword'])->name('password.create');
+Route::get('set-password/{token}', [SetPasswordController::class, 'showSetPasswordForm'])->name('password.set');
+
 // Employee
-Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'employee']], function () {
+Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('employee.home');
+    Route::get('/profile', [HomeController::class, 'profile'])->name('employee.profile');
+    Route::post('/profile', [HomeController::class, 'updateProfile'])->name('update.profile');
+    Route::get('/change-password', [HomeController::class, 'account'])->name('employee.account');
+    Route::post('/change-password', [HomeController::class, 'changePassword'])->name('change-password');
+    Route::get('/wallet-histories', [HomeController::class, 'account'])->name('employee.wallets');
 });
 
 // Admin
