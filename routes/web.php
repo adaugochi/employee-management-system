@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\PayrollController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SetPasswordController;
@@ -55,5 +56,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/employees/user/{id?}', [EmployeeController::class, 'addEmployee'])->name('admin.employee');
     Route::post('/employee', [EmployeeController::class, 'saveEmployee'])->name('admin.employee.save');
     Route::post('set-password/resend/{id}', [EmployeeController::class, 'resendToken'])->name('password.resend.token');
+
+    // Payroll
+    Route::get('/payroll', [PayrollController::class, 'index'])->name('admin.payroll');
+    Route::get('/payroll/new', [PayrollController::class, 'makePayment'])->name('admin.payroll.new');
+    Route::get('/payroll/save', [PayrollController::class, 'makePayment'])->name('admin.payroll.save');
 });
 

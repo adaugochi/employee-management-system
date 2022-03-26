@@ -33,6 +33,15 @@
                             <span class="nk-menu-text">Employees</span>
                         </a>
                     </li>
+
+                    <li class="nk-menu-item">
+                        <a href="{{ route('admin.payroll') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon">
+                                <x-bootstrap-icon name="wallet" class="icon"/>
+                            </span>
+                            <span class="nk-menu-text">Payroll</span>
+                        </a>
+                    </li>
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->
         </div><!-- .nk-sidebar-content -->

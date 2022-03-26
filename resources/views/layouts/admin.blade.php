@@ -35,7 +35,7 @@
             @include('elements.admin.sidebar')
             <!-- wrap @s -->
             <div class="nk-wrap ">
-                <!-- main header @s -->
+            <!-- main header @s -->
             @include('elements.admin.header')
             <!-- main header @e -->
                 <!-- content @s -->
