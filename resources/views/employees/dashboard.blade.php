@@ -27,7 +27,7 @@
             @include('partials.dashboard-card', [
                 'icon' => 'cash-stack',
                 'cardTitle' => 'My Wallet',
-                'totalCount' => 0.00,
+                'totalCount' => number_format(auth()->user()->employee->wallet, 2),
                 'placement' => 'bottom',
                 'cardDescription' => 'This show your the total amount in your wallet'
             ])

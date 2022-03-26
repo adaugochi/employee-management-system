@@ -12,10 +12,6 @@ class Messages
     const INVALID_TOKEN = "Invalid token";
     const PWD_RESET_MSG = 'Your password reset was successful';
     const PWD_SET_MSG = 'Your password set was successful';
-    const ACCT_DEACTIVATE = 'This account has been deactivated. You can no longer sign in';
-    const ACCT_EXIST = 'This account is registered already, you can login';
-    const INVALID_SIGNUP_TOKEN = "Invalid sign up token";
-    const INVALID_VERIFICATION_CODE = "You entered an invalid verification code";
     const NOT_UPDATED = 'Entity failed to update';
     const NOT_CREATED = 'Entity not saved';
 
@@ -23,5 +19,10 @@ class Messages
     public static function getSuccessMessage($entity, $task = 'created'): string
     {
         return sprintf('%s was %s successfully', $entity, $task);
+    }
+
+    public static function getNotSuccessMessage($entity, $task = 'created'): string
+    {
+        return sprintf('%s was %s not successfully', $entity, $task);
     }
 }

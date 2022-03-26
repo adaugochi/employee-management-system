@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Exceptions\ModelNotCreatedException;
+use App\Exceptions\ModelNotUpdatedException;
 use App\Helpers\Messages;
 use App\Helpers\Utils;
 use App\Http\Repositories\UserRepository;
@@ -34,9 +35,12 @@ class EmployeeController extends BaseAdminController
         return view('admin.employees.index', compact('users'));
     }
 
-    public function addEmployee()
+    public function addEmployee($id = null)
     {
         $user = [];
+        if ($id) {
+            $user = $this->userRepository->findById($id);
+        }
         return view('admin.employees.employee', compact('user'));
     }
 
@@ -45,19 +49,26 @@ class EmployeeController extends BaseAdminController
         DB::beginTransaction();
         try {
             $email = $request->get('email');
+            $userId = $request->get('id');
             $token = Utils::generateToken();
             $actionURL = config('app.url') . "set-password/" . $token;
-            $userId = $this->userService->saveUser($request->all());
+
+            $user = $this->userService->saveUser($request->all());
+            $userId = $userId ?? $user->id;
             $this->userService->saveEmployee($request->all(), $userId);
 
-            $this->userService->sendPasswordToken($email, $token);
-            Mail::to($email)->send(new SetPasswordMail($request->get('first_name'), $actionURL));
+            if (!$userId) {
+                $this->userService->sendPasswordToken($email, $token);
+                Mail::to($email)->send(new SetPasswordMail($request->get('first_name'), $actionURL));
+            }
+
+            $message = $userId ?
+                Messages::getSuccessMessage('Employee', 'updated') :
+                Messages::getSuccessMessage('Employee');
 
             DB::commit();
-            return redirect(route(self::EMP_REDIRECT_URI))->with([
-                'success' => Messages::getSuccessMessage('Employee')
-            ]);
-        } catch (ModelNotCreatedException $ex) {
+            return redirect(route(self::EMP_REDIRECT_URI))->with(['success' => $message]);
+        } catch (ModelNotCreatedException | ModelNotUpdatedException $ex) {
             DB::rollBack();
             return redirect(route(self::EMP_REDIRECT_URI))->with(['error' => $ex->getMessage()]);
         }

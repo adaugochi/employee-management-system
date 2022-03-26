@@ -26,7 +26,7 @@
                                             </div>
                                         </a>
                                         <ul class="dropdown">
-                                            @if(auth()->user()->is_admin === 0)
+                                            @if(auth()->user()->is_admin == 0)
                                                 <li><a href="{{ route('employee.home') }}">My Dashboard</a></li>
                                                 <li><a href="{{ route('employee.profile') }}">Profile</a></li>
                                             @else

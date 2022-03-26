@@ -14,18 +14,16 @@
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
 
     <!-- all css here -->
-    <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/bootstrap-icon.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/dashboard/css/dash.css">
     <link rel="stylesheet" href="/css/bundle.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/toastr.css">
 
     @yield('link')
 
-<!-- Fonts -->
+    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700%7CSource+Code+Pro&amp;display=swap" rel="stylesheet">
 </head>
@@ -67,13 +65,12 @@
     @include('elements.employee.footer')
 </div>
 
-<script src="/js/jquery.min.js"></script>
 <script src="/js/plugins.js"></script>
-<script src="/js/main.js"></script>
 <script src="/node_modules/toastr/toastr.js"></script>
 <script src="/js/app.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('js/validation.js') }}"></script>
 @include('partials.flash-messages')
 
 @yield('script')

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
@@ -89,5 +90,10 @@ class User extends Authenticatable
     protected static function clearCache(): bool
     {
         return Cache::forget('users');
+    }
+
+    public function employee(): HasOne
+    {
+        return $this->hasOne(Employee::class, 'user_id', 'id');
     }
 }

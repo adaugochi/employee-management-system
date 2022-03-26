@@ -51,18 +51,18 @@
                                          value="{{ $user ? $user->email : old('email') }}"/>
                                 <x-input name="job_title"
                                          placeholder="Job Title *"
-                                         value="{{ $user ? $user->job_title : old('job_title') }}"
+                                         value="{{ $user ? $user->employee->job_title : old('job_title') }}"
                                          column="col-md-6 pl-2"/>
                                 <x-input name="salary"
                                          placeholder="Monthly Salary *"
                                          type="number"
-                                         value="{{ $user ? $user->salary : old('salary') }}"
+                                         value="{{ $user ? $user->employee->salary : old('salary') }}"
                                          column="col-md-6 pl-2"/>
                                 <label class="col-md-2 text-gray">Start Date *</label>
                                 <x-input name="start_date"
                                          placeholder="Start Date *"
                                          type="date"
-                                         value="{{ $user ? $user->start_date : old('start_date') }}"
+                                         value="{{ $user ? date('Y-m-d', strtotime($user->employee->start_date)) : old('start_date') }}"
                                          column="col-md-4"/>
                             </div>
 

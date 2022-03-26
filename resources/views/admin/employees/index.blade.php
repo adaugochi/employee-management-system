@@ -48,7 +48,12 @@
                                                     <ul class="link-list-opt no-bdr">
                                                         <li>
                                                             <a href="">
-                                                                <span>View Employee</span>
+                                                                <span>View</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ route('admin.employee', ['id' => $user->id]) }}">
+                                                                <span>Edit</span>
                                                             </a>
                                                         </li>
                                                     </ul>
