@@ -73,4 +73,19 @@ class EmployeeController extends BaseAdminController
             return redirect(route(self::EMP_REDIRECT_URI))->with(['error' => $ex->getMessage()]);
         }
     }
+
+    public function resendToken($id = null)
+    {
+        $token = Utils::generateToken();
+        $actionURL = config('app.url') . "set-password/" . $token;
+        $user = $this->userRepository->findById($id);
+        if ($user) {
+            $email = $user->email;
+            $this->userService->sendPasswordToken($email, $token);
+            Mail::to($email)->send(new SetPasswordMail($user->first_name, $actionURL));
+            return redirect(route(self::EMP_REDIRECT_URI))->with(['success' => 'Token sent']);
+        } else {
+            return redirect(route(self::EMP_REDIRECT_URI))->with(['error' => 'Token not sent']);
+        }
+    }
 }

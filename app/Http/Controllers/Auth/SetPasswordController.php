@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Exceptions\ModelNotUpdatedException;
 use App\Exceptions\TokenExpiredException;
 use App\Helpers\Messages;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordRequest as SetPasswordRequest;
 use App\Http\Services\AuthService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\RedirectResponse;
 
-class SetPasswordController extends Controller
+class SetPasswordController extends BaseAuthController
 {
     protected $authService;
 
@@ -42,7 +40,7 @@ class SetPasswordController extends Controller
         }
     }
 
-    public function setPassword(SetPasswordRequest $request): RedirectResponse
+    public function setPassword(SetPasswordRequest $request)
     {
         try {
             $this->authService->validateToken($request->get('token'));

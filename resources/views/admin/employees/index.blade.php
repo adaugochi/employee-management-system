@@ -46,11 +46,19 @@
 
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
+                                                        @if(!$user->is_active)
                                                         <li>
-                                                            <a href="">
-                                                                <span>View</span>
+                                                            <a href="{{ route('password.resend.token', ['id' => $user->id]) }}"
+                                                               onclick="event.preventDefault();
+                                                                        document.getElementById('resendToken{{$user->id}}').submit();">
+                                                                <span>Resend Token</span>
                                                             </a>
+                                                            <form action="{{ route('password.resend.token', ['id' => $user->id]) }}"
+                                                                  method="POST" id="resendToken{{$user->id}}" >
+                                                                @csrf
+                                                            </form>
                                                         </li>
+                                                        @endif
                                                         <li>
                                                             <a href="{{ route('admin.employee', ['id' => $user->id]) }}">
                                                                 <span>Edit</span>

@@ -54,5 +54,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/employees', [EmployeeController::class, 'index'])->name('admin.employees');
     Route::get('/employees/user/{id?}', [EmployeeController::class, 'addEmployee'])->name('admin.employee');
     Route::post('/employee', [EmployeeController::class, 'saveEmployee'])->name('admin.employee.save');
+    Route::post('set-password/resend/{id}', [EmployeeController::class, 'resendToken'])->name('password.resend.token');
 });
 
