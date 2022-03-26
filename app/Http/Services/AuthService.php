@@ -5,19 +5,16 @@ namespace App\Http\Services;
 use App\Exceptions\ModelNotUpdatedException;
 use App\Exceptions\TokenExpiredException;
 use App\Helpers\Messages;
-use App\Helpers\Statuses;
 use App\Helpers\Utils;
 use App\Http\Repositories\PasswordResetRepository;
 use App\Http\Repositories\UserRepository;
-use App\Models\User;
+use App\Mail\ResetPasswordMail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthService extends BaseService
 {
-
-    const EXPIRES = 960; // 15 minutes
-
     protected $userRepository;
     protected $pwdResetRepository;
 
@@ -61,7 +58,7 @@ class AuthService extends BaseService
 
     public function sendResetLink($request): bool
     {
-        $email = $request->email;
+        $email = $request['email'];
 
         $user = $this->userRepository->findFirst(['email' => $email]);
         if (!$user) {
@@ -71,8 +68,22 @@ class AuthService extends BaseService
         $token = Utils::generateToken();
         $this->sendPasswordToken($email, $token);
 
-        $url =  config('app.url') . "password/reset/" . $token;
+        $actionURL =  config('app.url') . "password/reset/" . $token;
 
+        Mail::to($email)->send(new ResetPasswordMail($user->name, $actionURL));
+        return true;
+    }
+
+    /**
+     * @throws ModelNotUpdatedException
+     */
+    public function resetPassword($request): bool
+    {
+        $user = $this->userRepository->findFirst(['email' => $request['email']])
+            ->update(['password' => Hash::make($request['password'])]);
+        if (!$user) {
+            throw new ModelNotUpdatedException(Messages::NOT_UPDATED);
+        }
         return true;
     }
 }

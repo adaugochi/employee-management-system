@@ -1,6 +1,5 @@
 @extends('layouts.auth')
 @section('route', $formActionURL)
-{{-- // route('password.update')--}}
 @section('header', $title)
 @section('content')
     <input type="hidden" value="{{ $token }}" name="token">

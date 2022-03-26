@@ -28,7 +28,7 @@
         <tr>
             <td style="padding: 0 30px">
                 <p style="margin-bottom: 10px;">If the button above does not work, paste this link into your web browser:</p>
-                <a href="#" style="color: #6576ff; text-decoration:none;word-break: break-all;">{{ $actionUrl }} </a>
+                <a href="{{ $actionURL}}" style="color: #6576ff; text-decoration:none;word-break: break-all;">{{ $actionURL}}</a>
             </td>
         </tr>
         <tr>

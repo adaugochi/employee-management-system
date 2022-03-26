@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\helpers\Messages;
-use App\Http\Controllers\Controller;
+use App\Helpers\Messages;
 use App\Http\Requests\ForgetPasswordRequest;
 use App\Http\Services\AuthService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use Twilio\Exceptions\ConfigurationException;
-use Twilio\Exceptions\TwilioException;
 
-class ForgotPasswordController extends Controller
+class ForgotPasswordController extends BaseAuthController
 {
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +35,7 @@ class ForgotPasswordController extends Controller
         $this->authService = new AuthService();
     }
 
-    public function sendResetLink(ForgetPasswordRequest $request)
+    public function sendResetLinkEmail(ForgetPasswordRequest $request)
     {
         try {
             $this->authService->sendResetLink($request->all());

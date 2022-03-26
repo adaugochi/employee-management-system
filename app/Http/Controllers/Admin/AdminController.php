@@ -24,10 +24,11 @@ class AdminController extends BaseAdminController
         $countEmployees = count($this->employeeRepository->findAll());
         $countActiveEmployees = count($this->userRepository->findAll(['is_active' => 1, 'is_admin' => 0]));
         $countInactiveEmployees = count($this->userRepository->findAll(['is_active' => 0, 'is_admin' => 0]));
+        $countProfileComplete = count($this->employeeRepository->findAll(['is_profile_complete' => 1]));
 
         return view(
             'admin.dashboard',
-            compact('countActiveEmployees', 'countEmployees', 'countInactiveEmployees')
+            compact('countActiveEmployees', 'countEmployees', 'countInactiveEmployees', 'countProfileComplete')
         );
     }
 

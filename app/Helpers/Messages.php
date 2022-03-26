@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 class Messages
 {
-    const FORGET_PASSWORD_MSG = "A password reset link was sent successfully. You will receive an SMS in a minute time";
+    const FORGET_PASSWORD_MSG = "A password reset link was sent successfully. You will receive an email in a minute time";
     const USER_NOT_FOUND = "Could not find this user";
     const ACCT_NOT_EXIST = 'This account does not exist';
     const INCORRECT_CREDENTIALS = 'Incorrect login credentials';

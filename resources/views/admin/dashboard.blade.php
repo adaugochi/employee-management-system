@@ -30,7 +30,7 @@
         @include('partials.dashboard-card', [
             'icon' => 'person-check',
             'cardTitle' => 'Employees Profile Complete',
-            'totalCount' => 0,
+            'totalCount' => $countProfileComplete,
             'placement' => 'left',
             'cardDescription' => 'The shows the total number of employees that have completed their profile'
         ])
