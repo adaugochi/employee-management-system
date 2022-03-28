@@ -47,8 +47,3 @@
     @endif
 
 @endsection
-@section('script')
-    <script>
-
-    </script>
-@endsection

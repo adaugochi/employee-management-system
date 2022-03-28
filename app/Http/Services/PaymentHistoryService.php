@@ -51,7 +51,6 @@ class PaymentHistoryService extends BaseService
             DB::commit();
             return true;
         } catch (\Exception $ex) {
-            dd($ex->getMessage());
             DB::rollBack();
             return false;
         }

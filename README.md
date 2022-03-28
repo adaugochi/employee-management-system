@@ -47,6 +47,27 @@ git clone https://github.com/adaugochi/employee-management-system.git
 ```bash
 git clone git@github.com:adaugochi/employee-management-system.git
 ```
+## Environment Variables
+Make a copy of `.env.example` to `.env` in the env directory. Fill in the with appropriate details. Examples
+
+```dotenv
+## Database
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+## Mail (You can create an account with mailtrap.io)
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=null
+
+## Default Admin creds
+DEFAULT_ADMIN_EMAIL=admin@ems.com
+DEFAULT_ADMIN_PASSWORD=11111111
+DEFAULT_ADMIN_PHONE_NUMBER="08101111111"
+DEFAULT_ADMIN_INTL_NUMBER="+2348101111111"
+```
 
 ## Install Dependencies
 #### Composer Dependencies
@@ -60,7 +81,6 @@ npm install
 ```
 
 ## Virtual Host Setup (optional)
-
 *Windows*
 [Link 1](http://foundationphp.com/tutorials/apache_vhosts.php)
 [Link 2](https://www.kristengrote.com/blog/articles/how-to-set-up-virtual-hosts-using-wamp)
@@ -87,61 +107,60 @@ Sample Virtual Host Config for Apache
 </VirtualHost>
 ```
 
-## Environment Variables
-Make a copy of `.env.example` to `.env` in the env directory.
-
 ## Setup Database
 
-#### Create Database
+### Create Database
 ```sql
 CREATE DATABASE ems CHARACTER SET utf8 DEFAULT COLLATE utf8_unicode_ci;
 ```
 
 ### Migration
 ```bash
-// run migration
+# run migration
 php artisan migrate
 
-// rollback migration
+# rollback migration (optional)
 php artisan migrate:rollback
 
-// refresh migration
+# refresh migration (optional)
 php artisan migrate:refresh
 ```
 
-### Specify Path to Migration File
+### Specify Path to Migration File (optional)
 ```bash
-// run migration
+# run migration
 php artisan migrate --path=database/migrations/filename.php
 
-// rollback migration
+# rollback migration
 php artisan migrate:rollback --path=database/migrations/filename.php
 
-// refresh migration
+# refresh migration
 php artisan migrate:refresh --path=database/migrations/filename.php
 ```
 
-## Seeding
+### Seeding
+This will help seed the default admin credentials into the database
 ```bash
 php artisan db:seed --class=UserSeeder
 ```
 
-## Compile SCSS to CSS
+## Compile SCSS to CSS (During Development)
 You can compile your scss file to css using:
 
 ```bash
 npm run watch
 ```
 
-## Starting the Application
+## Starting the Application (optional)
 You can run the application in development mode by running this command from the project directory:
-
 ```bash
 php artisan serve
 ```
+The command above can be skipped if you already created a virtual host
 
 ## Author of README.md
 - Adaa Mgbede <adaamgbede@gmail.com>
+[Linked In](https://www.linkedin.com/in/maryfaithmgbede/)
 
 ## Code of Conduct
 In order to ensure that the Laravel community is welcoming to all, please review and

@@ -49,33 +49,6 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1">
-                            <div class="dropdown-inner">
-                                <ul class="link-list">
-                                    <li>
-                                        <a href="#">
-                                            <x-bootstrap-icon name="person" class="icon"/>
-                                            <span>View Profile</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="dropdown-inner">
-                                <ul class="link-list">
-                                    <li>
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                            <x-bootstrap-icon name="box-arrow-right" class="icon"/>
-                                            <span>Logout</span>
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                              class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </li>
                 </ul>
             </div>

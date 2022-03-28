@@ -42,6 +42,20 @@
                             <span class="nk-menu-text">Payment History</span>
                         </a>
                     </li>
+
+                    <li class="nk-menu-item">
+                        <a href="{{ route('logout') }}" class="nk-menu-link"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <span class="nk-menu-icon">
+                                 <x-bootstrap-icon name="box-arrow-right" class="icon"/>
+                            </span>
+                            <span class="nk-menu-text">Logout</span>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                              class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->
         </div><!-- .nk-sidebar-content -->

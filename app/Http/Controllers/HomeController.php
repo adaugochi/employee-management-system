@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Messages;
 use App\Http\Repositories\EmployeeRepository;
+use App\Http\Repositories\PaymentHistoryRepository;
 use App\Http\Repositories\UserRepository;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\ProfileRequest;
@@ -14,7 +15,7 @@ class HomeController extends Controller
 {
     protected $employeeRepository;
     protected $userRepository;
-    protected $payrollRepository;
+    protected $paymentHistoryRepository;
 
     /**
      * Create a new controller instance.
@@ -26,6 +27,7 @@ class HomeController extends Controller
         $this->middleware('auth');
         $this->userRepository = new UserRepository();
         $this->employeeRepository = new EmployeeRepository();
+        $this->paymentHistoryRepository = new PaymentHistoryRepository();
     }
 
     /**
@@ -85,6 +87,8 @@ class HomeController extends Controller
 
     public function walletHistory()
     {
-        return view('employees.wallets');
+        $employeeID = auth()->user()->employee->id;
+        $payments = $this->paymentHistoryRepository->findAll(['employee_id' => $employeeID]);
+        return view('employees.wallet', compact('payments'));
     }
 }

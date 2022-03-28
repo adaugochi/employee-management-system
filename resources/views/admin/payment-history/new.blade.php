@@ -14,7 +14,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-input">
-                                        <select name="employee_id[]">
+                                        <select name="employee_id[]" class="employee-input" onchange="viewSalary(this)">
                                             <option value>Select employee *</option>
                                             @foreach($employees as $employee)
                                                 <option value="{{ $employee->id }}">
@@ -27,6 +27,7 @@
                                 <x-input name="amount_paid[]"
                                          placeholder="Amount to Pay *"
                                          type="number"
+                                         class="amount"
                                          value="{{ old('amount_paid') }}"
                                          column="col-md-6 pl-2"/>
                                 <div class="col-md-6">
@@ -49,7 +50,7 @@
                                 <div class="row payment-template-wrapper">
                                     <div class="col-md-6">
                                         <div class="form-input">
-                                            <select name="employee_id[]">
+                                            <select name="employee_id[]" class="employee-input" onchange="viewSalary(this)">
                                                 <option value>Select employee *</option>
                                                 @foreach($employees as $employee)
                                                     <option value="{{ $employee->id }}">
@@ -62,6 +63,7 @@
                                     <x-input name="amount_paid[]"
                                              placeholder="Amount to Pay *"
                                              type="number"
+                                             class="amount"
                                              value="{{ old('amount_paid') }}"
                                              column="col-md-6"/>
                                     <div class="col-md-6">
@@ -108,11 +110,33 @@
                 let input = $("#payment-template").first().clone();
                 $("#parentRoll").append(input.html());
             })
-
         })(jQuery)
 
         function removePaymentField($this) {
             $this.closest('.payment-template-wrapper').remove();
+        }
+
+        function viewSalary($this) {
+            let parentRow = $this.closest('.row'),
+                amountInput = parentRow.querySelector('.amount');
+
+            $.ajax({
+                url: '/api/employee/show',
+                type: 'get',
+                data: {
+                    id: $this.value
+                },
+                success: function (res) {
+                    amountInput.value = res.data.salary;
+                },
+                error: function(xhr) {
+                    const status = xhr.status
+                    let err = JSON.parse(xhr.responseText);
+                    if(status === 422) {
+                        toastr.error(err.errors.size);
+                    }
+                }
+            });
         }
 
     </script>

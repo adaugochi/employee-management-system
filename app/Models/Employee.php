@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Employee extends BaseModel
@@ -36,7 +35,8 @@ class Employee extends BaseModel
         'zip_code',
         'start_date',
         'end_date',
-        'user_id'
+        'user_id',
+        'is_profile_complete'
     ];
 
     public function user(): HasOne
