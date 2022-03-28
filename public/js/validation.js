@@ -12596,7 +12596,8 @@ __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/d
 (function ($) {
   var authForm = $('#authForm'),
       profileForm = $('#profileFOrm'),
-      employeeForm = $('#employeeForm');
+      employeeForm = $('#employeeForm'),
+      paymentForm = $('#payForm');
   $.validator.addMethod("isEmailValid", function (value, element) {
     return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
   }, 'Please enter a valid email address.');
@@ -12662,6 +12663,13 @@ __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/d
       salary: "required",
       job_title: "required",
       title: "required"
+    }
+  });
+  paymentForm.validate({
+    rules: {
+      "employee_id[]": "required",
+      "amount_paid[]": "required",
+      "month[]": "required"
     }
   });
 })(jQuery);

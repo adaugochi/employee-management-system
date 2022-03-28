@@ -15,12 +15,14 @@ class CreatePayrollTable extends Migration
      */
     public function up()
     {
-        Schema::create(MigrationConstants::TABLE_PAYROLL, function (Blueprint $table) {
+        Schema::create(MigrationConstants::TABLE_PAYMENT_HISTORY, function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
+            $table->string('transaction_reference');
             $table->decimal('amount_paid', 19, 2);
             $table->unsignedBigInteger('paid_by');
+            $table->smallInteger('month');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('paid_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
@@ -36,6 +38,6 @@ class CreatePayrollTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(MigrationConstants::TABLE_PAYROLL);
+        Schema::dropIfExists(MigrationConstants::TABLE_PAYMENT_HISTORY);
     }
 }

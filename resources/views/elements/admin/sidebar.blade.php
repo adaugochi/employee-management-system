@@ -35,11 +35,11 @@
                     </li>
 
                     <li class="nk-menu-item">
-                        <a href="{{ route('admin.payroll') }}" class="nk-menu-link">
+                        <a href="{{ route('admin.payment-history') }}" class="nk-menu-link">
                             <span class="nk-menu-icon">
                                 <x-bootstrap-icon name="wallet" class="icon"/>
                             </span>
-                            <span class="nk-menu-text">Payroll</span>
+                            <span class="nk-menu-text">Payment History</span>
                         </a>
                     </li>
                 </ul><!-- .nk-menu -->

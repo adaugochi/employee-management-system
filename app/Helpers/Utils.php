@@ -7,9 +7,9 @@ use Illuminate\Support\Str;
 
 class Utils
 {
-    public static function generateToken(): string
+    public static function generateToken($length = 100): string
     {
-        return Str::random(100); //md5(rand(1, 10) . microtime()); //OR str_random(32);
+        return Str::random($length); //md5(rand(1, 10) . microtime()); //OR str_random(32);
     }
 
     public static function formatDate($timestamp)

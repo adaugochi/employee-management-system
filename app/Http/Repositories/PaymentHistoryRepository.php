@@ -2,13 +2,13 @@
 
 namespace App\Http\Repositories;
 
-use App\Models\Payroll;
+use App\Models\PaymentHistory;
 
-class PayrollRepository extends BaseRepository
+class PaymentHistoryRepository extends BaseRepository
 {
     public function __construct()
     {
-        $this->model = new Payroll();
+        $this->model = new PaymentHistory();
         parent::__construct($this->model);
     }
 }

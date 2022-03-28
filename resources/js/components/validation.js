@@ -3,7 +3,8 @@ require('jquery-validation');
 (function ($) {
     let authForm = $('#authForm'),
         profileForm = $('#profileFOrm'),
-        employeeForm = $('#employeeForm');
+        employeeForm = $('#employeeForm'),
+        paymentForm = $('#payForm');
 
     $.validator.addMethod("isEmailValid",
         function(value, element) {
@@ -76,6 +77,14 @@ require('jquery-validation');
             salary: "required",
             job_title: "required",
             title: "required"
+        }
+    })
+
+    paymentForm.validate({
+        rules: {
+            "employee_id[]": "required",
+            "amount_paid[]": "required",
+            "month[]": "required"
         }
     })
 

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EmployeeController;
-use App\Http\Controllers\Admin\PayrollController;
+use App\Http\Controllers\Admin\PaymentHistoryController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SetPasswordController;
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth', 'employee']], fun
     Route::post('/profile', [HomeController::class, 'updateProfile'])->name('update.profile');
     Route::get('/change-password', [HomeController::class, 'account'])->name('employee.account');
     Route::post('/change-password', [HomeController::class, 'changePassword'])->name('change-password');
-    Route::get('/wallet-histories', [HomeController::class, 'account'])->name('employee.wallets');
+    Route::get('/wallet-histories', [HomeController::class, 'walletHistory'])->name('employee.wallets');
 });
 
 // Admin
@@ -57,9 +57,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::post('/employee', [EmployeeController::class, 'saveEmployee'])->name('admin.employee.save');
     Route::post('set-password/resend/{id}', [EmployeeController::class, 'resendToken'])->name('password.resend.token');
 
-    // Payroll
-    Route::get('/payroll', [PayrollController::class, 'index'])->name('admin.payroll');
-    Route::get('/payroll/new', [PayrollController::class, 'makePayment'])->name('admin.payroll.new');
-    Route::get('/payroll/save', [PayrollController::class, 'makePayment'])->name('admin.payroll.save');
+    // PaymentHistory
+    Route::get('/payment-history', [PaymentHistoryController::class, 'index'])->name('admin.payment-history');
+    Route::get('/payment-history/new', [PaymentHistoryController::class, 'makePayment'])->name('admin.payment-history.new');
+    Route::post('/payment-history/save', [PaymentHistoryController::class, 'createPayroll'])->name('admin.payment-history.save');
 });
 

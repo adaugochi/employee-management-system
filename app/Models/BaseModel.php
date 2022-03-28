@@ -17,15 +17,24 @@ class BaseModel extends Model
         $this->attributes['created_at'] = Utils::getCurrentDatetime();
     }
 
+    public function getPaidAtAttribute(): string
+    {
+        return $this->formatDate('paid_at');
+    }
+
     public function getCreatedAtAttribute(): string
     {
-        $createdAt = Carbon::parse($this->attributes['created_at']);
-        return $createdAt->format('M d, Y');
+        return $this->formatDate('created_at');
     }
 
     public function getUpdatedAtAttribute(): string
     {
-        $createdAt = Carbon::parse($this->attributes['updated_at']);
-        return $createdAt->format('M d, Y');
+        return $this->formatDate('updated_at');
+    }
+
+    public function formatDate($attribute): string
+    {
+        $date = Carbon::parse($this->attributes[$attribute]);
+        return $date->format('M d, Y');
     }
 }

@@ -14,6 +14,7 @@ class HomeController extends Controller
 {
     protected $employeeRepository;
     protected $userRepository;
+    protected $payrollRepository;
 
     /**
      * Create a new controller instance.
@@ -80,5 +81,10 @@ class HomeController extends Controller
         return redirect(route('employee.profile'))->with([
             'error' => Messages::getNotSuccessMessage('profile', 'updated')
         ]);
+    }
+
+    public function walletHistory()
+    {
+        return view('employees.wallets');
     }
 }

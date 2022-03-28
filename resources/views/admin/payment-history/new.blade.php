@@ -1,16 +1,14 @@
 @extends('layouts.admin')
 @section('content-title', 'Single/Bulk Payment')
 @section('content-side')
-    <a href="javascript:void(0);" class="btn btn--primary btn--sm" id="add-more">
-        add more
-    </a>
+    <a href="javascript:void(0);" class="btn btn--primary btn--sm" id="add-more">add more</a>
 @endsection
 @section('content')
     <div class="nk-block">
         <div class="card card-bordered card-preview">
             <div class="card-inner">
                 <div class="contact-from-wrapper section-space--mt_30">
-                    <form action="{{ route('admin.payroll.save') }}" method="post" id="payForm">
+                    <form action="{{ route('admin.payment-history.save') }}" method="post" id="payForm">
                         @csrf
                         <div class="contact-page-form">
                             <div class="row">
@@ -31,13 +29,25 @@
                                          type="number"
                                          value="{{ old('amount_paid') }}"
                                          column="col-md-6 pl-2"/>
+                                <div class="col-md-6">
+                                    <div class="form-input">
+                                        <select name="month[]">
+                                            <option value>Select the month *</option>
+                                            @foreach(\App\Models\PaymentHistory::MONTHS_OF_YEAR as $key => $month)
+                                                <option value="{{ $key }}">
+                                                    {{ $month }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
                             <div id="parentRoll"></div>
 
                             <template id="payment-template">
                                 <div class="row payment-template-wrapper">
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                         <div class="form-input">
                                             <select name="employee_id[]">
                                                 <option value>Select employee *</option>
@@ -53,8 +63,20 @@
                                              placeholder="Amount to Pay *"
                                              type="number"
                                              value="{{ old('amount_paid') }}"
-                                             column="col-md-5"/>
-                                    <div class="col-md-2">
+                                             column="col-md-6"/>
+                                    <div class="col-md-6">
+                                        <div class="form-input">
+                                            <select name="month[]">
+                                                <option value>Select the month *</option>
+                                                @foreach(\App\Models\PaymentHistory::MONTHS_OF_YEAR as $key => $month)
+                                                    <option value="{{ $key }}">
+                                                        {{ $month }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <button type="button" class="close fs-26px payment-close"
                                                 onclick="removePaymentField(this)">
                                             <x-bootstrap-icon name="x-lg"/>

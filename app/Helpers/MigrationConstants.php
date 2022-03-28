@@ -10,7 +10,7 @@ namespace App\Helpers;
 class MigrationConstants
 {
     const TABLE_USERS = 'users';
-    const TABLE_PAYROLL = 'payroll';
+    const TABLE_PAYMENT_HISTORY = 'payment_history';
     const TABLE_EMPLOYEES = 'employees';
     const TABLE_FAILED_JOBS = 'failed_jobs';
     const TABLE_PASSWORD_RESET = 'password_resets';
