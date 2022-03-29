@@ -30,7 +30,7 @@ admin to use the system. The administrator create user accounts and the applicat
 - Employee
 
 ## Requirements
-- PHP - ^7.2
+- PHP - ^7.4
 - [node](https://nodejs.org/)
 - npm
 - composer
