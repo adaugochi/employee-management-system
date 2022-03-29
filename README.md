@@ -108,6 +108,7 @@ Sample Virtual Host Config for Apache
 ```
 
 ## Setup Database
+You can either `create` your own database and `run migration` or simply import the `ems.sql` file in the root directory
 
 ### Create Database
 ```sql
