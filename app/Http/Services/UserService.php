@@ -23,7 +23,7 @@ class UserService extends BaseService
      * @throws ModelNotCreatedException
      * @throws ModelNotUpdatedException
      */
-    public function saveUser($request): int
+    public function saveUser($request)
     {
         if ($request['id']) {
             $user = $this->userRepository->update($request, $request['id']);

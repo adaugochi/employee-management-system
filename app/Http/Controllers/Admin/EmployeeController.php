@@ -49,20 +49,20 @@ class EmployeeController extends BaseAdminController
         DB::beginTransaction();
         try {
             $email = $request->get('email');
-            $userId = $request->get('id');
+            $id = $request->get('id');
             $token = Utils::generateToken();
             $actionURL = config('app.url') . "set-password/" . $token;
 
             $user = $this->userService->saveUser($request->all());
-            $userId = $userId ?? $user->id;
+            $userId = $id ?? $user->id;
             $this->userService->saveEmployee($request->all(), $userId);
 
-            if (!$userId) {
+            if (!$id) {
                 $this->userService->sendPasswordToken($email, $token);
                 Mail::to($email)->send(new SetPasswordMail($request->get('first_name'), $actionURL));
             }
 
-            $message = $userId ?
+            $message = $id ?
                 Messages::getSuccessMessage('Employee', 'updated') :
                 Messages::getSuccessMessage('Employee');
 
