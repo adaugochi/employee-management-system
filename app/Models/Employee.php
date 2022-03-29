@@ -36,8 +36,31 @@ class Employee extends BaseModel
         'start_date',
         'end_date',
         'user_id',
+        'profile_picture',
         'is_profile_complete'
     ];
+
+    public function setProfilePictureAttribute($value)
+    {
+        if ($value) {
+            if (!is_string($value)) {
+                if(file_exists(public_path('/uploads/profile/' . $value))) {
+                    unlink(public_path('uploads/profile/' . $value));
+                };
+                $imageName = time() . $value->getClientOriginalName();
+                $value->move('uploads/profile', $imageName);
+                $this->attributes['profile_picture'] = $imageName;
+            }
+        }
+    }
+
+    public function uploadImage($request): string
+    {
+        $file = $request->file('image');
+        $imageName = time() . $file->getClientOriginalName();
+        $file->move('uploads/products', $imageName);
+        return $imageName;
+    }
 
     public function user(): HasOne
     {

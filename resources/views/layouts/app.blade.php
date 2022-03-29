@@ -39,7 +39,12 @@
                     <div class="col-md-6 mb-4 mb-md-0">
                         <div class="d-flex align-items-center">
                             <div class="jumbotron__user-avatar">
+                                @if(auth()->user()->employee->profile_picture)
+                                    <img src="/uploads/profile/{{auth()->user()->employee->profile_picture}}"
+                                         class="img-fluid" style="border-radius: 50%; width: 100px; height: 100px">
+                                @else
                                 <i class="icon bi bi-person"></i>
+                                @endif
                             </div>
                             <div class="ml-3">
                                 <div class="jumbotron__user-email">{{ auth()->user()->email }}</div>

@@ -10,7 +10,7 @@
 @section('content')
     <section class="bg-white py-5">
         <div class="container">
-            <form action="{{ route('update.profile') }}" method="post" id="profileForm">
+            <form action="{{ route('update.profile') }}" method="post" id="profileForm" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
@@ -65,6 +65,19 @@
                                         @include('partials.error', ['fieldName' => 'middle_name'])
                                     </div>
                                 </div>
+                                <div class="col-md-12 mb-3">
+                                    <label>Profile Picture</label>
+                                    <div class="form-input">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile"
+                                                   name="profile_picture"
+                                                   value="{{ $employee ? $employee->profile_picture : '' }}">
+                                            <label class="custom-file-label" for="customFile">
+                                                {{ $employee ? $employee->profile_picture : 'Choose file...' }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <label>Job Title <span class="required">*</span></label>
                                     <div class="form-input">
@@ -106,7 +119,7 @@
                                         <input type="text" value="{{ $employee->zip_code }}" name="zip_code"/>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label>Country <span class="required">*</span></label>
                                     <div class="form-input">
                                         <select class="select" name="country" id="country">
@@ -114,7 +127,7 @@
                                         @include('partials.error', ['fieldName' => 'country'])
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label>State <span class="required">*</span></label>
                                     <div class="form-input">
                                         <select class="select" name="state" id="state">
